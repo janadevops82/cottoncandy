@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+                echo 'Stage completed,Moving to next'
+            }
+        }
+        stage('inventory') {
+            steps {
+                echo 'System inventory'
+                sh '''
+                ifconfig
+                whoami
+                uname
+                uname -r
+                
+                '''
+                echo 'Inventory Stage completed'
+            }
+        }
+        stage('File System') {
+            steps {
+                echo 'File Operation'
+                sh '''
+                pwd
+                touch  test1.txt /tmp
+                '''
+                echo 'All stages completed :) '
+            }
+        }
+    
+    }
+
+
+}
