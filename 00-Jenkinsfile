@@ -12,11 +12,9 @@ pipeline {
             steps {
                 echo 'System inventory'
                 sh '''
-                ifconfig
-                whoami
-                uname
-                uname -r
-                
+                python -V
+                sudo yum install maven
+                          
                 '''
                 echo 'Inventory Stage completed'
             }
@@ -26,7 +24,7 @@ pipeline {
                 echo 'File Operation'
                 sh '''
                 pwd
-                touch  test1.txt /tmp
+                
                 '''
                 echo 'All stages completed :) '
             }
